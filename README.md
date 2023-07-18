@@ -95,4 +95,18 @@ Click “Build Now” button, if you have configured everything correctly, the b
 
 3. Configure jenkins to copy files to NFS Server via SSH
 
-- 
+- Now we have our artifacts saved locally on Jenkins server, the next step is to copy them to our NFS server to /mnt/apps directory.
+
+- First we will download "Publish Over SSH" plugin and install it.
+
+- On main dashboard select “Manage Jenkins” and choose “Manage Plugins” menu item.
+
+- On “Available” tab search for “Publish Over SSH” plugin and install it 
+
+- On main dashboard select “Manage Jenkins” and choose “Configure System” menu item.
+
+- Scroll down to Publish over SSH plugin configuration section and configure it to be able to connect to your NFS server
+
+![ssh conf](./images/SSH%20success%20conf.PNG)
+
+- Save the configuration, open your Jenkins job/project configuration page and add another one “Post-build Action”
