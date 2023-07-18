@@ -110,3 +110,27 @@ Click “Build Now” button, if you have configured everything correctly, the b
 ![ssh conf](./images/SSH%20success%20conf.PNG)
 
 - Save the configuration, open your Jenkins job/project configuration page and add another one “Post-build Action”
+
+![build atifacts](./images/build%20artifacts.PNG)
+
+- Configure it to send all files produced by the build into our previously define remote directory. In our case we want to copy all files and directories – so we use **
+
+- If you want to apply some particular pattern to define which files to send – use this syntax http://ant.apache.org/manual/dirtasks.html#patterns.
+
+![build artifacts over ssh](./images/build%20atifact%20over%20ssh.PNG)
+
+- Save this configuration and go ahead, change something in README.MD file in your GitHub Tooling repository.
+
+- Webhook will trigger a new job and in the “Console Output” of the job you will find something like this
+
+``````
+SSH: Transferred 25 file(s)
+Finished: SUCCESS
+``````
+
+- To make sure that the files in /mnt/apps have been updated – connect via SSH/Putty to your NFS server and check README.MD file
+
+    `cat /mnt/apps/README.md`
+
+- If you see the changes you had previously made in your GitHub – the job works as expected.
+
